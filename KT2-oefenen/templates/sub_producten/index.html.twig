@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SubProducten index{% endblock %}
+
+{% block body %}
+    <h1>SubProducten index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Omschrijving</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sub_producten in sub_productens %}
+            <tr>
+                <td>{{ sub_producten.id }}</td>
+                <td>{{ sub_producten.naam }}</td>
+                <td>{{ sub_producten.omschrijving }}</td>
+                <td>
+                    <a href="{{ path('sub_producten_show', {'id': sub_producten.id}) }}">show</a>
+                    <a href="{{ path('sub_producten_edit', {'id': sub_producten.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sub_producten_new') }}">Create new</a>
+{% endblock %}
