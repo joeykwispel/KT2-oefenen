@@ -9,20 +9,31 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Prijs</th>
-                <th>Omschrijving</th>
-                <th>Naam</th>
-                <th>actions</th>
+                <th>naam</th>
+                <th>omschrijving</th>
+                <th>prijs</th>
             </tr>
         </thead>
         <tbody>
         {% for producten in productens %}
             <tr>
-                <td>{{ producten.id }}</td>
-                <td>{{ producten.prijs }}</td>
-                <td>{{ producten.omschrijving }}</td>
                 <td>{{ producten.naam }}</td>
+                <td>{{ producten.omschrijving }}</td>
+                <td>{{ producten.prijs }},-</td>
+        <thead>
+            <tr>
+                <th>Sub naam</th>
+                <th>Sub omschrijving</th>
+            </tr>
+        </thead>
+            {% for sub_producten in sub_productens %}
+                {% if producten.naam == sub_producten.ProductLink %}
+                <tr>
+                    <td>{{ sub_producten.naam }} </td>
+                    <td>{{ sub_producten.omschrijving }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
                 <td>
                     <a href="{{ path('producten_show', {'id': producten.id}) }}">show</a>
                     <a href="{{ path('producten_edit', {'id': producten.id}) }}">edit</a>
